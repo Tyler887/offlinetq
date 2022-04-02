@@ -10,11 +10,10 @@ def download_file(url):
             shutil.copyfileobj(r.raw, f)
 
     return local_filename
-
-with zipfile.ZipFile(download_file("https://github.com/Tyler887/typoqsuat/archive/refs/heads/ghpages.zip") ,"r") as zip_ref:
-    global file
-    file = zip_ref.name
+file = download_file("https://github.com/Tyler887/typoqsuat/archive/refs/heads/ghpages.zip"
+with zipfile.ZipFile(file) ,"r") as zip_ref:
     zip_ref.extractall(os.path.expanduser("~") + "/Typoqsuat")
 
 print("Deleting archives...")
 os.unlink(file)
+print("done :)")
